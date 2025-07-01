@@ -43,12 +43,13 @@ public class MemberDao2 {
     }
 
 
-    public Optional<Member> selectMember(Long id) {
+    public Member selectMember(Long id) {
         var sql = "select id, name, age, email from member where id = :id";
-        return jdbcClient.sql(sql)
+        Optional<Member> id1 = jdbcClient.sql(sql)
                 .param("id", id)
                 .query(MEMBER_MAPPER)
                 .optional();
+        return id1.orElseThrow();
     }
 
     public List<Member> selectAll() {

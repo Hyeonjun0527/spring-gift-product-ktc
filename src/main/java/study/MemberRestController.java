@@ -1,5 +1,8 @@
 package study;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +32,13 @@ public class MemberRestController {
     }
 
     @GetMapping("/api/members/{id}")
-    public Optional<Member> selectMember(@PathVariable Long id) {
-        return memberDao2.selectMember(id);
-
+    public ResponseEntity<Member> selectMember(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(memberDao2.selectMember(id).orElseThrow());
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
+
+
 }
