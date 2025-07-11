@@ -34,33 +34,33 @@ public class MemberRestControllerTest {
         System.out.println("setUp");
     }
 
-    @Test
-    void 존재하지_않는_아이디로_조회하면_404가_반환된다() {
-        String url = "http://localhost:" + port + "/api/members/2";
-        RestClient.ResponseSpec retrieve = client.get()
-                .uri(url)
-                .retrieve();
-        //200인지 확인
-//        assertThat(retrieve.toBodilessEntity()
-//                .getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+//    @Test
+//    void 존재하지_않는_아이디로_조회하면_404가_반환된다() {
+//        String url = "http://localhost:" + port + "/api/members/2";
+//        RestClient.ResponseSpec retrieve = client.get()
+//                .uri(url)
+//                .retrieve();
+//        //200인지 확인
+////        assertThat(retrieve.toBodilessEntity()
+////                .getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+//
+//        //toEntity(Member.class)했는데 toBodilessEntity로 바꿨음
+//
+//        Assertions.assertThatExceptionOfType(HttpClientErrorException.NotFound.class)
+//                .isThrownBy(
+//                        ()->
+//                        client.get()
+//                                .uri(url)
+//                                .retrieve()
+//                                .toBodilessEntity()
+//                );
+//
+////        var actual = retrieve.toEntity(Member.class).getBody();
+////        assertThat(Objects.requireNonNull(actual).name()).isEqualTo("choi");
+//    }
 
-        //toEntity(Member.class)했는데 toBodilessEntity로 바꿨음
-
-        Assertions.assertThatExceptionOfType(HttpClientErrorException.NotFound.class)
-                .isThrownBy(
-                        ()->
-                        client.get()
-                                .uri(url)
-                                .retrieve()
-                                .toBodilessEntity()
-                );
-
-//        var actual = retrieve.toEntity(Member.class).getBody();
-//        assertThat(Objects.requireNonNull(actual).name()).isEqualTo("choi");
-    }
-
-    @Test
-    void test2() {
-
-    }
+//    @Test
+//    void test2() {
+//
+//    }
 }

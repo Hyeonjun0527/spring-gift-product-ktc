@@ -34,7 +34,7 @@ public class MemberRestController {
     @GetMapping("/api/members/{id}")
     public ResponseEntity<Member> selectMember(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(memberDao2.selectMember(id).orElseThrow());
+            return ResponseEntity.ok(memberDao2.selectMember(id));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
