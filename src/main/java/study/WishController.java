@@ -26,10 +26,9 @@ public class WishController {
     }
 
     @PostMapping("/api/wishes")
-    public ResponseEntity<Object> createWish(@RequestBody CreateWishRequest request) {
+    public ResponseEntity<Object> createWish(@RequestBody CreateWishRequest request, @LoginMember Member member) {
         var id = 1L;
-        var memberId = 1L; // 임시로 하드코딩 (실제로는 request에서 추출하거나 토큰에서 추출)
-        var response = wishService.create(id, request, memberId);
+        var response = wishService.create(id, request, member.id());
         return ResponseEntity.created(URI.create("/api/wishes/" + id)).body(response);
     }
     
